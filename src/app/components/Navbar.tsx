@@ -38,15 +38,16 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20 sm:h-24">
         {/* Logo */}
         <a href="#" className="relative z-50 shrink-0">
           <Image
             src="/images/logo.png"
             alt="Romo Motorsport"
-            width={150}
-            height={42}
-            className="h-8 sm:h-10 w-auto"
+            width={300}
+            height={84}
+            className="h-16 sm:h-20 w-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+            style={{ mixBlendMode: "lighten" }}
             priority
           />
         </a>

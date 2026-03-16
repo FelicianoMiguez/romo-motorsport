@@ -11,9 +11,10 @@ export default function Footer() {
             <Image
               src="/images/logo.png"
               alt="Romo Motorsport"
-              width={180}
-              height={50}
-              className="mb-4"
+              width={300}
+              height={84}
+              className="mb-4 h-20 w-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+              style={{ mixBlendMode: "lighten" }}
             />
             <p className="text-[#9E9E9E] text-sm leading-relaxed">
               Centro de servicio automotor multimarca con más de 15 años de
