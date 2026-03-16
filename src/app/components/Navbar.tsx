@@ -38,7 +38,7 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-52 sm:h-60">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-[146px] sm:h-[168px]">
         {/* Logo */}
         <a href="#" className="relative z-50 shrink-0">
           <Image
@@ -46,7 +46,7 @@ export default function Navbar() {
             alt="Romo Motorsport"
             width={400}
             height={112}
-            className="h-48 sm:h-56 w-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+            className="h-[134px] sm:h-[156px] w-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
             priority
           />
         </a>
