@@ -40,17 +40,15 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-24 sm:h-28">
         {/* Logo */}
-        <a href="#" className="relative z-50 shrink-0" style={{ mixBlendMode: "screen" }}>
-          <div className="bg-black rounded">
-            <Image
-              src="/images/logo.png"
-              alt="Romo Motorsport"
-              width={400}
-              height={112}
-              className="h-20 sm:h-24 w-auto"
-              priority
-            />
-          </div>
+        <a href="#" className="relative z-50 shrink-0">
+          <Image
+            src="/images/logo.png"
+            alt="Romo Motorsport"
+            width={400}
+            height={112}
+            className="h-20 sm:h-24 w-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+            priority
+          />
         </a>
 
         {/* Desktop links */}
