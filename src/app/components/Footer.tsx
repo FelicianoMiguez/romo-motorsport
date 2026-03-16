@@ -8,14 +8,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Logo & Description */}
           <div className="lg:col-span-1">
-            <Image
-              src="/images/logo.png"
-              alt="Romo Motorsport"
-              width={300}
-              height={84}
-              className="mb-4 h-20 w-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
-              style={{ mixBlendMode: "lighten" }}
-            />
+            <div className="inline-block bg-black rounded mb-4" style={{ mixBlendMode: "screen" }}>
+              <Image
+                src="/images/logo.png"
+                alt="Romo Motorsport"
+                width={400}
+                height={112}
+                className="h-24 w-auto"
+              />
+            </div>
             <p className="text-[#9E9E9E] text-sm leading-relaxed">
               Centro de servicio automotor multimarca con más de 15 años de
               experiencia en Buenos Aires. Mecánica general y performance.
