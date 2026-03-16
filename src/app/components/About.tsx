@@ -20,7 +20,7 @@ const brands = [
 
 export default function About() {
   return (
-    <section id="nosotros" className="py-20 sm:py-28 bg-bg">
+    <section id="nosotros" className="py-16 sm:py-20 md:py-28 bg-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text */}

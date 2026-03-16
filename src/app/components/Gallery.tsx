@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -16,11 +16,14 @@ const photos = [
 
 export default function Gallery() {
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const touchStart = useRef<number | null>(null);
 
   const close = useCallback(() => setLightbox(null), []);
   const prev = useCallback(
     () =>
-      setLightbox((i) => (i !== null ? (i - 1 + photos.length) % photos.length : null)),
+      setLightbox((i) =>
+        i !== null ? (i - 1 + photos.length) % photos.length : null
+      ),
     []
   );
   const next = useCallback(
@@ -45,11 +48,25 @@ export default function Gallery() {
     };
   }, [lightbox, close, prev, next]);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStart.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart.current === null) return;
+    const diff = e.changedTouches[0].clientX - touchStart.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) prev();
+      else next();
+    }
+    touchStart.current = null;
+  };
+
   return (
-    <section id="galeria" className="py-20 sm:py-28 bg-bg">
+    <section id="galeria" className="py-16 sm:py-20 md:py-28 bg-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-10 sm:mb-14">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[2px] bg-primary" />
             <span className="text-primary font-body text-sm uppercase tracking-[0.15em] font-medium">
@@ -63,13 +80,13 @@ export default function Gallery() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
           {photos.map((photo, i) => (
             <button
               key={photo.src}
               onClick={() => setLightbox(i)}
-              className={`group relative rounded-xl overflow-hidden border border-border hover:border-primary/30 transition-all cursor-pointer ${
-                i === 0 ? "md:col-span-2 md:row-span-2" : ""
+              className={`group relative rounded-lg sm:rounded-xl overflow-hidden border border-border hover:border-primary/30 transition-all cursor-pointer ${
+                i === 0 ? "col-span-2 row-span-2" : ""
               }`}
             >
               <div
@@ -84,13 +101,13 @@ export default function Gallery() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes={
                     i === 0
-                      ? "(max-width: 768px) 50vw, 50vw"
+                      ? "(max-width: 768px) 100vw, 50vw"
                       : "(max-width: 768px) 50vw, 25vw"
                   }
                 />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-end">
-                  <p className="w-full p-3 text-white text-xs sm:text-sm font-body font-medium translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="w-full p-2 sm:p-3 text-white text-[10px] sm:text-xs md:text-sm font-body font-medium translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     {photo.alt}
                   </p>
                 </div>
@@ -105,11 +122,13 @@ export default function Gallery() {
         <div
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
           onClick={close}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           {/* Close */}
           <button
             onClick={close}
-            className="absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-10"
+            className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-10"
             aria-label="Cerrar"
           >
             <X className="w-5 h-5" />
@@ -121,7 +140,7 @@ export default function Gallery() {
               e.stopPropagation();
               prev();
             }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-10"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-10"
             aria-label="Anterior"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -133,7 +152,7 @@ export default function Gallery() {
               e.stopPropagation();
               next();
             }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-10"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-10"
             aria-label="Siguiente"
           >
             <ChevronRight className="w-5 h-5" />
@@ -141,7 +160,7 @@ export default function Gallery() {
 
           {/* Image */}
           <div
-            className="relative w-[90vw] h-[80vh] max-w-5xl"
+            className="relative w-[94vw] h-[70vh] sm:w-[90vw] sm:h-[80vh] max-w-5xl"
             onClick={(e) => e.stopPropagation()}
           >
             <Image
@@ -152,10 +171,15 @@ export default function Gallery() {
               sizes="90vw"
               priority
             />
-            <p className="absolute bottom-4 left-0 right-0 text-center text-white text-sm font-body">
+            <p className="absolute bottom-4 left-0 right-0 text-center text-white text-xs sm:text-sm font-body">
               {photos[lightbox].alt}
             </p>
           </div>
+
+          {/* Counter */}
+          <p className="absolute bottom-4 left-0 right-0 text-center text-white/50 text-xs">
+            {lightbox + 1} / {photos.length}
+          </p>
         </div>
       )}
     </section>

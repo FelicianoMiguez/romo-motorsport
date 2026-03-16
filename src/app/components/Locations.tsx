@@ -25,7 +25,7 @@ const locations = [
 
 export default function Locations() {
   return (
-    <section id="ubicaciones" className="py-20 sm:py-28 bg-surface">
+    <section id="ubicaciones" className="py-16 sm:py-20 md:py-28 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-14">
@@ -49,7 +49,7 @@ export default function Locations() {
               className="bg-bg border border-border rounded-xl overflow-hidden"
             >
               {/* Map */}
-              <div className="relative h-64">
+              <div className="relative h-48 sm:h-64">
                 <iframe
                   src={`https://maps.google.com/maps?q=${loc.mapQuery}&output=embed&z=16`}
                   className="w-full h-full border-0"
@@ -61,7 +61,7 @@ export default function Locations() {
               </div>
 
               {/* Info */}
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 <h3 className="font-heading text-xl uppercase tracking-[0.05em] font-bold mb-4">
                   Romo Motorsport —{" "}
                   <span className="text-primary">{loc.name}</span>

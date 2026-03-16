@@ -90,6 +90,8 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${oswald.variable} ${inter.variable}`}>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#0A0A0A" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -2,7 +2,7 @@ import { Phone } from "lucide-react";
 
 export default function CTAFinal() {
   return (
-    <section id="contacto" className="relative py-20 sm:py-28 overflow-hidden">
+    <section id="contacto" className="relative py-16 sm:py-20 md:py-28 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/10 to-bg" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(229,57,53,0.15),transparent_70%)]" />

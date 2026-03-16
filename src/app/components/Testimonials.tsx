@@ -25,7 +25,7 @@ const reviews = [
 
 export default function Testimonials() {
   return (
-    <section className="py-20 sm:py-28 bg-surface">
+    <section className="py-16 sm:py-20 md:py-28 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-14">
@@ -41,12 +41,12 @@ export default function Testimonials() {
           </h2>
         </div>
 
-        {/* Reviews grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* Reviews — horizontal scroll on mobile, grid on desktop */}
+        <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-5 sm:overflow-visible sm:pb-0">
           {reviews.map((review) => (
             <div
               key={review.name}
-              className="bg-bg border border-border rounded-xl p-6 flex flex-col hover:border-accent/20 transition-colors"
+              className="bg-bg border border-border rounded-xl p-5 sm:p-6 flex flex-col hover:border-accent/20 transition-colors min-w-[280px] sm:min-w-0 snap-center"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-4">

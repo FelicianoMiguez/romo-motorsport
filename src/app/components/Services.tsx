@@ -67,7 +67,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicios" className="py-20 sm:py-28 bg-bg">
+    <section id="servicios" className="py-16 sm:py-20 md:py-28 bg-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section header */}
         <div className="text-center mb-14">
@@ -84,7 +84,7 @@ export default function Services() {
         </div>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {services.map((service) => {
             const Icon = service.icon;
             return (
@@ -93,7 +93,7 @@ export default function Services() {
                 className="group relative rounded-xl overflow-hidden border border-border hover:border-primary/30 transition-all duration-300 bg-surface"
               >
                 {/* Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-40 sm:h-48 overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.name}
@@ -118,16 +118,16 @@ export default function Services() {
                 </div>
 
                 {/* Content */}
-                <div className="p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-primary" />
+                <div className="p-4 sm:p-5">
+                  <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-3">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                      <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                     </div>
-                    <h3 className="font-heading text-lg uppercase tracking-[0.05em] font-bold">
+                    <h3 className="font-heading text-base sm:text-lg uppercase tracking-[0.05em] font-bold">
                       {service.name}
                     </h3>
                   </div>
-                  <p className="text-[#9E9E9E] text-sm leading-relaxed mb-5 line-clamp-2">
+                  <p className="text-[#9E9E9E] text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 line-clamp-2">
                     {service.description}
                   </p>
                   <a
@@ -136,7 +136,7 @@ export default function Services() {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-primary hover:text-red-400 font-body font-semibold uppercase tracking-[0.1em] text-xs transition-colors"
+                    className="inline-flex items-center gap-2 bg-primary/10 text-primary hover:bg-primary hover:text-white font-body font-semibold uppercase tracking-[0.1em] text-xs px-4 py-2 rounded-lg transition-all active:scale-95"
                   >
                     Consultar
                     <svg
